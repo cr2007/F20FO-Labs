@@ -1,0 +1,14 @@
+studentFirstName: John
+studentLastName: Doe
+studentEmail: jd1234
+
+courseCode: F20FO
+
+labTitles:
+ - Introduction to Linux and VirtualBox
+ - Digital Forensic Foundations
+ - File Structure & Data Recovery
+ - Data Hiding & Data Recovery
+ - Anti-Forensics & Cryptography
+ - Imaging & Data Analysis
+ - Live Forensics and IR
