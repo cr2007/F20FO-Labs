@@ -1,4 +1,4 @@
-#import "../lib.typ": question
+#import "../lib.typ": question, redColour
 #import "@preview/oxifmt:0.2.1": strfmt
 
 #let data = yaml("../metadata.yml")
@@ -42,9 +42,9 @@
   it
 }
 
-#let tableSolution(value, base) = [#strong[
-  #text(str(value), fill: rgb("C00000"))#if base != 0 [#sub(str(base))] else []
-]]
+#let tableSolution(value, base) = strong[
+  #text(str(value), fill: redColour)#if base != 0 [#sub(str(base))]
+]
 
 #table(
   columns: (1fr, 1fr, 1fr),
