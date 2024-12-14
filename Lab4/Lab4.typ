@@ -64,7 +64,7 @@ Primary Partitions can contain a file system or an operating system.
 #question(marked: true, [How many times does the sequence of values `55 AA` occur in the MBR?])
 
 #grid(
-  columns: (auto, auto),
+  columns: 2,
   gutter: 0.25cm,
   align: (horizon, horizon),
   [The sequence of values `55 AA` appears #underline[3 times] in the MBR.
@@ -78,7 +78,7 @@ Primary Partitions can contain a file system or an operating system.
     align: top,
     figure(caption: "Screenshot of the Master Boot Record (MBR) of the disk", image(
       alt: "A screenshot of the Master Boot Record",
-      "MBR-Sector-Editor.png",
+      "images/MBR-Sector-Editor.png",
     ))
   )
 )
@@ -103,7 +103,7 @@ Partition Size: `00 00 50 00`#sub("16") #sym.arrow 20480 sectors
 #question(marked: true, "Do the sizes correspond with what you can see in My Computer?")
 
 #grid(
-  columns: (auto, auto),
+  columns: 2,
   gutter: 0.5cm,
   [Yes, the total size corresponds to what I see in My Computer.],
   figure(
@@ -111,7 +111,7 @@ Partition Size: `00 00 50 00`#sub("16") #sym.arrow 20480 sectors
     image(
       alt: "Screenshot of the total size of the disk",
       height: 4.33cm,
-      "Part2_Total-Size.png"
+      "images/Part2_Total-Size.png"
     )
   )
 )
@@ -122,7 +122,10 @@ Partition Size: `00 00 50 00`#sub("16") #sym.arrow 20480 sectors
 
 #question(marked: true, "Is the footer (the MBR signature) fixed? Attach a screenshot")
 
-#align(center, image("MBR-Signature-Footer.jpg", alt: "Screenshot of the fixed MBR signature"))
+#align(center, image(
+  alt: "Screenshot of the fixed MBR signature"
+  "images/MBR-Signature-Footer.jpg",
+))
 
 #line()
 #line()
