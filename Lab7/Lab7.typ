@@ -102,7 +102,9 @@ The `script` command takes a copy of everything which is output to the terminal 
 
 // #line()
 
-\ #question(marked: true, level: 3, "Submit a paragraph detailing what you expect to find from the Windows system. After your live analysis, submit a list of what you recovered from the contents of RAM, the list of running processes and network connections. Did you find any content, which might be of interest to an investigation?")
+\ #question(marked: true, level: 3,
+  "Submit a paragraph detailing what you expect to find from the Windows system. After your live analysis, submit a list of what you recovered from the contents of RAM, the list of running processes and network connections. Did you find any content, which might be of interest to an investigation?"
+)
 
 From the Windows system, we expect to find active processes and any suspicious files that may be present in the system.
 From the live analysis conducted, we recovered the following list of running processes.
