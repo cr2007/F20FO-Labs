@@ -49,7 +49,7 @@
 #table(
   columns: (1fr, 1fr, 1fr),
   align: horizon + center,
-  fill: (x, y) => if y == 0 {black},
+  fill: (_, y) => if y == 0 {black},
   table.header([*Current State*], [*Binary (unsigned)*], [*Hexadecimal*]),
   tableSolution(203, 10), [11001011], tableSolution("CB", 16),
   tableSolution(10999, 10), tableSolution(10101011110111, 2), [2AF7],
@@ -63,7 +63,7 @@
 #table(
   columns: (1fr, 1fr, 1fr),
   align: horizon + center,
-  fill: (x, y) => if y == 0 {black},
+  fill: (_, y) => if y == 0 {black},
   table.header([*Colour*], [*Hex Code RGB*], [*Decimal Code RGB*]),
   [Colour1], [AB 65 2F], [124 0 63],
   [Red], tableSolution("FF 00 00", 0), tableSolution(strfmt("255 0 0"), 0),
