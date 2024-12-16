@@ -70,7 +70,7 @@ When used properly, write-blockers can guarantee the preservation of the evidenc
 #figure(caption: "The result of the Logical Acquisition of a file", image(
   alt: "A screenshot of various hashes of a file via Logical Acquisition",
   height: 6.64cm,
-  "Lab2_Logical-Acquisition.png"
+  "images/Lab2_Logical-Acquisition.png"
 ))
 
 #question("What is MD5 and SHA1, and why are they important?")
@@ -96,7 +96,7 @@ Physical Acquisitions are preferred in high-stakes investigations like criminal 
   image(
     alt: "Screenshot of a Physical Acquisition of the file",
     height: 7.75cm,
-    "Lab2_Q3_Physical-Acquisition.png"
+    "images/Lab2_Q3_Physical-Acquisition.png"
   )
 )
 

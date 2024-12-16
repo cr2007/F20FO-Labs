@@ -95,7 +95,7 @@
   grid.cell(
     rowspan: 2,
     align: top,
-    rect(stroke: 0.25pt, image("File1.jpeg"))
+    rect(stroke: 0.25pt, image("images/File1.jpeg"))
   )
 )
 
@@ -156,7 +156,7 @@ Yes, the PNG header is visible in Offset `386 (0x182)`
     align: top,
     figure(caption: "Scalpel command execution", image(
       alt: "A screenshot of the result of a Scalpel command",
-      "Scalpel-Command-Execution.png",
+      "images/Scalpel-Command-Execution.png",
     ))
   )
 )
