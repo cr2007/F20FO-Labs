@@ -57,7 +57,8 @@ jobs:
           mkdir -p dist
           for lab in Lab*/Lab*.typ; do
             lab_name=$(basename "$lab" .typ)
-            typst compile "$lab" "dist/$lab_name.pdf"
+            echo "Compiling $lab"
+            typst compile "$lab" "dist/$lab_name.pdf" --root .
           done
 
       - name: Generate centered index.html
