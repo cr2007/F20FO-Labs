@@ -123,7 +123,7 @@ Partition Size: `00 00 50 00`#sub("16") #sym.arrow 20480 sectors
 #question(marked: true, "Is the footer (the MBR signature) fixed? Attach a screenshot")
 
 #align(center, image(
-  alt: "Screenshot of the fixed MBR signature"
+  alt: "Screenshot of the fixed MBR signature",
   "images/MBR-Signature-Footer.jpg",
 ))
 
