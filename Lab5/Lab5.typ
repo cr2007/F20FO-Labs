@@ -4,6 +4,10 @@
 #let data = yaml("../metadata.yml")
 #let labNumber = 5
 
+#let unicodeA = "A".to-unicode()
+#let charToInt(c) = c.to-unicode() - unicodeA
+#let intToChar(i) = str.from-unicode(i + unicodeA)
+
 #set text(font: "Calibri")
 #set line(length: 100%)
 
@@ -37,6 +41,17 @@
 
 #heading(level: 2, "Shift Cipher")
 
+#let caesarEncrypt(plaintext, shift) = {
+  [#for c in upper(plaintext) {
+    let o = c.to-unicode()
+
+    if o >= unicodeA or o <= unicodeA + 25 {
+      let i = charToInt(c)
+      intToChar(calc.rem(i + shift, 26))
+    }
+  }]
+}
+
 \ #question(marked: true, level: 3, "Decrypt the following substitution Cipher, identify the key used, and show both the key and plaintext.")
 
 \
@@ -50,7 +65,7 @@
 
 #question(level: 3, [What does "*CAESAR*" become with a shift of 6?])
 
-"*CAESAR*" with a shift of 6 becomes "*IGKYGX*"
+"*CAESAR*" with a shift of 6 becomes "#strong(caesarEncrypt("CAESAR", 6))"
 
 \ #line()
 
@@ -154,7 +169,7 @@ JFIPJC VM OHJJ FLVM PLPKC EHLYU.]
 You need to start by counting the frequency of the letters and enter them into this table.
 
 #table(
-  columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+  columns: (1fr,) * 13,
   align: center,
   [*a*], [*b*], [*c*], [*d*], [*e*], [*f*], [*g*], [*h*], [*i*], [*j*], [*k*], [*l*], [*m*],
   [], [], [], [], [], [], [], [], [], [], [], [], [],
@@ -174,7 +189,7 @@ The remaining swaps are educated guesses.
   }
 
   #table(
-    columns: (1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+    columns: (1fr,) * 13,
     rows: 4,
     align: center,
     fill: (_, y) => if calc.even(y) {black},
@@ -205,17 +220,40 @@ The passphrase (keyword) used was `TCPIP`.]
   strong(it)
 }
 
+#let vigenereCiphertext = upper("MjxaxlXxotgggmRbrwmg")
+#let vigenereKey = "TCPIP"
+
+#let vigenereKeyArray(message, key) = {
+  let textLength = vigenereCiphertext.len()
+  let keyLength = key.len()
+
+  vigenereKey * int(textLength / keyLength) + vigenereKey.slice(0, calc.rem(textLength, keyLength))
+}
+
+#let decryptVigenere(ciphertext, key) = {
+  for i in range(ciphertext.len()) {
+    let ci = charToInt( ciphertext.at(i) )
+    let keyToInt = charToInt( key.at( calc.rem(i, key.len()) ) )
+
+    intToChar(calc.rem-euclid(ci - keyToInt, 26))
+  }
+}
+
+
 #table(
-  columns: (auto, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr),
+  columns: (auto,) + (auto,) * vigenereCiphertext.len(),
   rows: 3,
   align: horizon + center,
   fill: (x, y) =>
     if x == 0 {black}
     else if y == 2 {rgb("FFE599")},
   stroke: 0.5pt,
-  table.header([Key], [*T*] ,[*C*], [*P*], [*I*], [*P*], [*T*] ,[*C*], [*P*], [*I*], [*P*], [*T*] ,[*C*], [*P*], [*I*], [*P*], [*T*] ,[*C*], [*P*], [*I*], [*P*]),
-  [Ciphertext], "M", "J", "X", "A", "X", "L", "X", "X", "O", "T", "G", "G", "G", "M", "R", "B", "R", "W", "M", "G",
-  [Plaintext], "T", "H", "I", "S", "I", "S", "V", "I", "G", "E", "N", "E", "R", "E", "C", "I", "P", "H", "E", "R",
+  table.header(
+    [Key],
+    ..vigenereKeyArray(vigenereCiphertext, vigenereKey).clusters()
+  ),
+  [Ciphertext], ..vigenereCiphertext.clusters(),
+  [Plaintext], ..decryptVigenere(vigenereCiphertext, vigenereKey).clusters(),
 )
 
 This is Vigenère Cipher.
